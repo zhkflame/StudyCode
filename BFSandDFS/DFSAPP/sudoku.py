@@ -13,14 +13,14 @@ class sudoku(object):
             for j in range(9):
                 if self.chess[i][j]!=0:
                     continue
-                for k in range(1,11,1):
+                for k in range(1,10,1):
                     self.chess[i][j]=k
                     if(self.isValid(i,j) and self.sudoku()):
                         if not self.isSolve:
                             temp=copy.deepcopy(self.chess)
                             print(temp)
                             self.result.append(temp)
-                            self.isSolve=True
+                            #self.isSolve=True
                             #return True
                     self.chess[i][j]=0
                 return False
@@ -58,7 +58,27 @@ if __name__=="__main__":
            [0,3,6,0,5,0,0,0,2],
            [2,0,0,0,7,0,0,0,4],
            [7,0,0,2,9,0,8,5,0]]
-    mysudoku=sudoku(chess)
-    print(mysudoku.chess)
+    #多个解的数独
+    chess3=[[6,0,8,1,0,2,0,7,0],
+            [0,0,7,0,4,0,0,8,3],
+            [0,0,9,3,0,0,1,0,0],
+            [0,2,0,7,6,0,5,0,0],
+            [0,0,4,0,9,0,0,1,0],
+            [7,9,0,0,0,0,8,0,2],
+            [4,0,5,0,3,0,7,0,8],
+            [0,0,0,0,2,0,9,4,0],
+            [0,0,2,5,0,4,0,6,0]]
+    #无解的数独
+    chess4=[[0,0,2,0,4,0,9,0,0],
+            [3,6,0,1,0,2,0,4,7],
+            [0,0,0,9,0,5,0,0,0],
+            [1,5,0,0,3,0,0,9,2],
+            [0,0,7,0,2,0,3,0,0],
+            [8,2,0,0,7,0,0,6,1],
+            [0,0,0,4,0,3,0,0,0],
+            [6,7,0,2,0,8,0,5,4],
+            [0,0,4,0,5,0,8,0,0]]
+    mysudoku=sudoku(chess4)
+    #print(mysudoku.chess)
     mysudoku.sudoku()
     mysudoku.printResult()
