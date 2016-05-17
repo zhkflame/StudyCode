@@ -1,4 +1,4 @@
-def quickSort(L,start,end):
+﻿def quickSort(L,start,end):
     if(start<end):   #退出循环的条件
         l,r=start,end
         temp=L[start]
@@ -30,4 +30,4 @@ def quickSort(L,start,end):
 if __name__=="__main__":
     a=[3,67,123,71,72,1101,2,4,45,21,1,34,7,28,121]
     quickSort(a,0,len(a)-1)
-    print(a)
+    print(a)  #测试专用
