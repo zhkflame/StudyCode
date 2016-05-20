@@ -1,5 +1,4 @@
-﻿class TwoSum(object):
-test TwoSum
+class TwoSum(object):
     answer={}
 
     def add(self,input):

@@ -1,4 +1,3 @@
-﻿test KMP
 def getNext(p_str):
     next=[]
     lenP=len(p_str)
