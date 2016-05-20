@@ -1,5 +1,7 @@
+123456
 def strStr(haystack, needle):
     """
+345
     :type haystack: str
     :type needle: str
     :rtype: int
