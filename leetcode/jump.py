@@ -26,6 +26,6 @@ def jump(array):
 
 if __name__=="__main__":
     a=[2,3,1,1,1,2,2,1,1]
-    print jump(a)
+    print(jump(a))
 
 
