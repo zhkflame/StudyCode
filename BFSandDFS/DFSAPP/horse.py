@@ -25,14 +25,20 @@ class horse(object):
             temp=copy.deepcopy(self.chess)
             self.answer.append(temp)
             self.count+=1
+            print(temp)
             return True
         for k in range(8):
             iCur=i+self.ihorse[k]
             jCur=j+self.jhorse[k]
             if self.canJump(self.chess,iCur,jCur):
                 self.chess[iCur][jCur]=step+1
+
+                #加if判断的用于找到一个解就返回的情况
+                #if self.jump(iCur,jCur,self.chess[iCur][jCur]):
+                #    return True
+
+                #不加if判断，表示要找到所有解
                 self.jump(iCur,jCur,self.chess[iCur][jCur])
-                    #return True
                 self.chess[iCur][jCur]=0
         return False
 
@@ -52,8 +58,9 @@ class horse(object):
              iCur=i+self.ihorse[nDirect]
              jCur=j+self.jhorse[nDirect]
              self.chess[iCur][jCur]=step+1
-             if self.jump2(iCur,jCur,step+1):
-                 return True
+             #if self.jump2(iCur,jCur,step+1):
+             #    return True
+             self.jump2(iCur,jCur,step+1)
              self.chess[iCur][jCur]=0
          return False
 
@@ -113,7 +120,7 @@ class horse(object):
         return pHorse
 
 if __name__=="__main__":
-    myhorse=horse(8,10)
+    myhorse=horse(4,6)
     myhorse.jump2(0,0,1)
     myhorse.printStep()
 

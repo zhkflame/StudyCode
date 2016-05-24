@@ -15,13 +15,28 @@ class sudoku(object):
                     continue
                 for k in range(1,10,1):
                     self.chess[i][j]=k
+                    '''
                     if(self.isValid(i,j) and self.sudoku()):
                         if not self.isSolve:
                             temp=copy.deepcopy(self.chess)
                             print(temp)
                             self.result.append(temp)
-                            #self.isSolve=True
-                            #return True
+                            #下面用于只求一个解就返回
+                            self.isSolve=True
+                            return True
+                    '''
+                    if self.isValid(i,j):
+                        if self.sudoku():
+                            if not self.isSolve:
+                                temp=copy.deepcopy(self.chess)
+                                print(temp)
+
+                                #下面一句用于求所有解
+                                #self.result.append(temp)
+
+                                #下面的用于找到一个解就返回，这个和上两个不同，不是利用步数开始就判断是否满足条件
+                                self.isSolve=True
+                                return True
                     self.chess[i][j]=0
                 return False
         return True
@@ -78,7 +93,7 @@ if __name__=="__main__":
             [0,0,0,4,0,3,0,0,0],
             [6,7,0,2,0,8,0,5,4],
             [0,0,4,0,5,0,8,0,0]]
-    mysudoku=sudoku(chess4)
+    mysudoku=sudoku(chess3)
     #print(mysudoku.chess)
     mysudoku.sudoku()
     mysudoku.printResult()

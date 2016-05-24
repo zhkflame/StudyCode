@@ -5,6 +5,7 @@ class queen(object):
     m_Answer=[]
     m_Colomn=[]
     m_Queen=0
+    m_isSloved=False
 
     def __init__(self,size):
         self.m_Queen=size
@@ -16,7 +17,9 @@ class queen(object):
     def CalQueen(self,path,row):
         if row==self.m_Queen:
             temp=path[:]  #不能直接appendpath，列表中存的是指针，值回变，需要转存在添加进去
+            print(temp)
             self.m_Answer.append(temp)
+            self.m_isSloved=True
             return True
         for col in range(self.m_Queen):
             if self.CanLay(row,col):
@@ -25,21 +28,15 @@ class queen(object):
                 self.m_MinorDiagonal[row+col]=True
                 self.m_MainDiagonal[row-col+self.m_Queen-1]=True
 
-
+                #用于只返回一个解的情况，回溯,如果路径不正确，需要重新改回初值,无论是否求所有解 都要回溯
+                if self.CalQueen(path,row+1):
+                    return True
                 #用于找到所有解的情况
-                self.CalQueen(path,row+1)
+                #self.CalQueen(path,row+1)
                 self.m_Colomn[col]=False
                 self.m_MinorDiagonal[row+col]=False
                 self.m_MainDiagonal[row-col+self.m_Queen-1]=False
 
-
-                #回溯,如果路径不正确，需要重新改回初值
-                '''
-                if not self.CalQueen(path,row+1):
-                    self.m_Colomn[col]=False
-                    self.m_MinorDiagonal[row+col]=False
-                    self.m_MainDiagonal[row-col+self.m_Queen-1]=False
-                '''
         return False
 
 
