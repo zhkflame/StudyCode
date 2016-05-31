@@ -29,7 +29,7 @@ def calcKernelMatrix(train_x, kernelOption):
     kernelMatrix = mat(zeros((numSamples, numSamples)))
     for i in range(numSamples):
         kernelMatrix[:, i] = calcKernelValue(train_x, train_x[i, :], kernelOption)
-    print(kernelMatrix)
+    #print(kernelMatrix)
     return kernelMatrix
 
 
@@ -50,9 +50,9 @@ class SVMStruct:
 
 # calculate the error for alpha k
 def calcError(svm, alpha_k):
-    print(multiply(svm.alphas, svm.train_y))  #将每个alphas乘以对应的样本y值还是n*1的矩阵
-    print(svm.kernelMat[:, alpha_k])   #输出每一行的第alpha_k列 是n*1列的矩阵
-    print(svm.train_y[alpha_k])
+    #print(multiply(svm.alphas, svm.train_y))  #将每个alphas乘以对应的样本y值还是n*1的矩阵
+    #print(svm.kernelMat[:, alpha_k])   #输出每一行的第alpha_k列 是n*1列的矩阵
+    #print(svm.train_y[alpha_k])
     output_k = float(multiply(svm.alphas, svm.train_y).T * svm.kernelMat[:, alpha_k] + svm.b)
     error_k = output_k - float(svm.train_y[alpha_k])
     return error_k
@@ -280,7 +280,7 @@ test_y = labels[71:101, :]
 
 ## step 2: training...
 print("step 2: training...")
-C = 0.6
+C = 0.5
 toler = 0.001
 maxIter = 100
 svmClassifier = trainSVM(train_x, train_y, C, toler, maxIter, kernelOption = ('linear', 0))
