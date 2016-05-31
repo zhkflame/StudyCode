@@ -17,7 +17,7 @@ def kNNClassify(newInput, dataSet, labels, k):
     ## step 2: sort the distance
     # argsort() returns the indices that would sort an array in a ascending order
     sortedDistIndices = argsort(distance)
-    print(sortedDistIndices)
+    #print(sortedDistIndices)
 
     classCount = {} # define a dictionary (can be append element)
     for i in range(k):
