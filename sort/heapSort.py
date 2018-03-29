@@ -57,5 +57,6 @@ def HeapSort(L,len):
 if __name__=="__main__":
     a=[3,67,123,71,72,1101,2,4,45,21,1,34,7,28,121]
     b=[18,9,7]
+    print(a)
     print(HeapSort(a,len(a)))
 
